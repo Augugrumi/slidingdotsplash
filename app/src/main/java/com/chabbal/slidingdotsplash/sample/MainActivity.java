@@ -1,17 +1,11 @@
 package com.chabbal.slidingdotsplash.sample;
 
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.chabbal.slidingdotsplash.ImageViewPagerAdapter;
-import com.chabbal.slidingdotsplash.OnSetImageListener;
 import com.chabbal.slidingdotsplash.SlidingSplashView;
-import com.chabbal.slidingdotsplash.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 

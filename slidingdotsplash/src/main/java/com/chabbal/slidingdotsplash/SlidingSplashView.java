@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 /**
  * Created by Johny on 28/01/2017.
@@ -20,8 +19,8 @@ public class SlidingSplashView extends FrameLayout {
 
 
     private ViewPager mViewPager;
-    private ImageViewPagerAdapter mViewPagerAdapter;
-    private OnSetImageListener mOnSetImageListener;
+    private TextViewPagerAdapter mViewPagerAdapter;
+    private OnSetTextListener mOnSetTextListener;
     ViewPager.OnPageChangeListener mOnPageChangeListener;
 
 
@@ -39,7 +38,7 @@ public class SlidingSplashView extends FrameLayout {
     private void init(Context context, AttributeSet attrs){
         LayoutInflater.from(context).inflate(R.layout.sliding_splash_view,this);
         mViewPager = (ViewPager) findViewById(R.id.pager_splash);
-        mViewPagerAdapter = new ImageViewPagerAdapter(context,mOnSetImageListener);
+        mViewPagerAdapter = new TextViewPagerAdapter(context, mOnSetTextListener);
         if(!isInEditMode())
         if(attrs != null){
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingSplashView, 0,
@@ -52,7 +51,7 @@ public class SlidingSplashView extends FrameLayout {
                     drawables[i] = typed.getResourceId(i,0);
                 }
                 typed.recycle();
-                mViewPagerAdapter.setImageResources(drawables);
+                mViewPagerAdapter.setTextResources(drawables);
             }
             typedArray.recycle();
         }
@@ -61,14 +60,14 @@ public class SlidingSplashView extends FrameLayout {
         tabLayout.setupWithViewPager(mViewPager,true);
     }
 
-    public void setImageResources(@NonNull @ArrayRes @Size(min = 2) int[] imageResources){
-        mViewPagerAdapter.setImageResources(imageResources);
+    public void setTextResources(@NonNull @ArrayRes @Size(min = 2) int[] textResources){
+        mViewPagerAdapter.setTextResources(textResources);
     }
 
 
 
-    public void setOnShowImageListener(OnSetImageListener onShowImageListener){
-        mOnSetImageListener = onShowImageListener;
+    public void setOnShowTextListener(OnSetTextListener onShowTextListener){
+        mOnSetTextListener = onShowTextListener;
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){

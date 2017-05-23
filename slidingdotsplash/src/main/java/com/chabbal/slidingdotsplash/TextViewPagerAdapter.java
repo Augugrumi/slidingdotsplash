@@ -6,31 +6,30 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Size;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-
+import android.widget.TextView;
 
 
 /**
  * Created by Johny on 11/01/2017.
  */
 
-public class ImageViewPagerAdapter extends ViewPagerAdapter {
+public class TextViewPagerAdapter extends ViewPagerAdapter {
 
     private Context mContext;
     private OnItemClickListener mOnPagerItemClick;
-    private OnSetImageListener mOnSetImageListener;
-    private int mImageResources[];
+    private OnSetTextListener mOnSetTextListener;
+    private int mTextResources[];
 
-    public ImageViewPagerAdapter(Context context,@NonNull OnSetImageListener onSetImageListener ) {
+    public TextViewPagerAdapter(Context context, @NonNull OnSetTextListener onSetTextListener ) {
         mContext = context;
-        mOnSetImageListener = onSetImageListener;
-        mImageResources = new int[]{};
+        mOnSetTextListener = onSetTextListener;
+        mTextResources = new int[]{};
     }
 
     @Override
     public View getItem(final int position) {
-        ImageView imageView = (ImageView)LayoutInflater.from(mContext).inflate(R.layout.item_view_pager_image,null);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        TextView textView = (TextView)LayoutInflater.from(mContext).inflate(R.layout.item_view_pager_image,null);
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mOnPagerItemClick != null){
@@ -38,25 +37,24 @@ public class ImageViewPagerAdapter extends ViewPagerAdapter {
                 }
             }
         });
-        if(mOnSetImageListener != null){
-
-            mOnSetImageListener.setImage(imageView,position);
+        if(mOnSetTextListener != null){
+            mOnSetTextListener.setText(textView,position);
         }
         else{
 
-            imageView.setImageResource(mImageResources[position]);
+            textView.setText(mTextResources[position]);
         }
-        return imageView;
+        return textView;
     }
 
 
     @Override
     public int getCount() {
-        return mImageResources.length;
+        return mTextResources.length;
     }
 
-    public void setImageResources(@NonNull @ArrayRes @Size(min = 2) int[] imageResources){
-        mImageResources = imageResources;
+    public void setTextResources(@NonNull @ArrayRes @Size(min = 2) int[] textResources){
+        mTextResources = textResources;
         notifyDataSetChanged();
     }
 

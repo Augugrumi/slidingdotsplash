@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Sample</string>
 
+    <string name="one">one</string>
+    <string name="two">two</string>
+    <string name="three">three</string>
+
     <integer-array name="img_id_arr">
-        <item>@drawable/splash_test</item>
-        <item>@drawable/splash_test</item>
-        <item>@drawable/splash_test</item>
-        <item>@drawable/splash_test</item>
+        <item>@string/one</item>
+        <item>@string/two</item>
+        <item>@string/three</item>
     </integer-array>
 </resources>
